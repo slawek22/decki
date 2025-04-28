@@ -13,24 +13,28 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
   <script>
     async function loadGallery() {
-      const response = await fetch('/gallery.json');
-      const images = await response.json();
+      try {
+        const response = await fetch('/gallery.json');
+        const images = await response.json();
 
-      const gallery = document.getElementById('gallery');
+        const gallery = document.getElementById('gallery');
 
-      images.forEach(item => {
-        const link = document.createElement('a');
-        link.href = item.image;
-        link.setAttribute('data-lightbox', 'family');
-        link.setAttribute('data-title', item.title);
+        images.forEach(item => {
+          const link = document.createElement('a');
+          link.href = item.image;
+          link.setAttribute('data-lightbox', 'family');
+          link.setAttribute('data-title', item.title);
 
-        const img = document.createElement('img');
-        img.src = item.image;
-        img.alt = item.title;
+          const img = document.createElement('img');
+          img.src = item.image;
+          img.alt = item.title;
 
-        link.appendChild(img);
-        gallery.appendChild(link);
-      });
+          link.appendChild(img);
+          gallery.appendChild(link);
+        });
+      } catch (error) {
+        console.error('Błąd ładowania galerii:', error);
+      }
     }
 
     loadGallery();
