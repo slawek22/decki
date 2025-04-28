@@ -2,19 +2,39 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8">
-  <title>Nowa Galeria Rodzinna</title>
+  <title>Nowa Galeria Rodzinna - Automatyczna</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
 </head>
 <body>
   <h1>Nowa Galeria Rodzinna</h1>
-  <div class="gallery">
-    <a href="images/wakacje1.jpg" data-lightbox="family" data-title="Wakacje 1"><img src="images/wakacje1.jpg" alt="Wakacje 1"></a>
-    <a href="images/wakacje2.jpg" data-lightbox="family" data-title="Wakacje 2"><img src="images/wakacje2.jpg" alt="Wakacje 2"></a>
-    <a href="images/wakacje3.jpg" data-lightbox="family" data-title="Wakacje 3"><img src="images/wakacje3.jpg" alt="Wakacje 3"></a>
-    <a href="images/wakacje4.jpg" data-lightbox="family" data-title="Wakacje 4"><img src="images/wakacje4.jpg" alt="Wakacje 4"></a>
-    <a href="images/wakacje5.jpg" data-lightbox="family" data-title="Wakacje 5"><img src="images/wakacje5.jpg" alt="Wakacje 5"></a>
-  </div>
+  <div id="gallery" class="gallery"></div>
+
+  <script>
+    const images = [
+      "wakacje1.jpg",
+      "wakacje2.jpg",
+      "wakacje3.jpg",
+      "wakacje4.jpg",
+      "wakacje5.jpg"
+    ];
+
+    const gallery = document.getElementById('gallery');
+
+    images.forEach(image => {
+      const link = document.createElement('a');
+      link.href = `images/${image}`;
+      link.setAttribute('data-lightbox', 'family');
+      link.setAttribute('data-title', image);
+
+      const img = document.createElement('img');
+      img.src = `images/${image}`;
+      img.alt = image;
+
+      link.appendChild(img);
+      gallery.appendChild(link);
+    });
+  </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 </body>
