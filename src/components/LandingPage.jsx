@@ -17,7 +17,7 @@ export default function LandingPage() {
       <section className="bg-gray-100 text-center py-20">
         <h2 className="text-4xl font-bold mb-4">Zadbaj o swoje cyberbezpieczeństwo</h2>
         <p className="text-lg mb-6">Szkolenia online. Praktyczne scenariusze. Certyfikat. Dostęp 24/7.</p>
-        <a href="/register" className="bg-blue-600 text-white px-6 py-3 rounded text-lg hover:bg-blue-700">Rozpocznij naukę</a>
+        <a href="/register" className="bg-blue-600 text-white px-6 py-3 rounded text-lg hover:bg-blue-700" className="bg-blue-600 text-white px-6 py-3 rounded text-lg hover:bg-blue-700">Rozpocznij naukę</a>
       </section>
 
       <section id="benefits" className="max-w-5xl mx-auto py-16">
@@ -56,12 +56,12 @@ export default function LandingPage() {
           <div className="border rounded p-6">
             <h4 className="text-xl font-bold mb-2">Darmowy dostęp</h4>
             <p className="mb-4">Dostęp do kilku scenariuszy i materiałów.</p>
-            <button className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800">Rozpocznij za darmo</button>
+            <a href="/register" className="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800">Rozpocznij za darmo</a>
           </div>
           <div className="border rounded p-6 border-blue-600">
             <h4 className="text-xl font-bold mb-2">Pełny dostęp</h4>
             <p className="mb-4">Wszystkie szkolenia + certyfikat + dostęp do nowych scenariuszy.</p>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Wybierz plan</button>
+            <a href="/login" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Wybierz plan</a>
           </div>
         </div>
       </section>
