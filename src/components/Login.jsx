@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AuthLayout from "./AuthLayout";
+import bgImage from "../assets/background-cyber.png";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,33 +17,44 @@ export default function Login() {
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Błąd logowania");
-      setMessage("Zalogowano!");
+      setMessage("Zalogowano pomyślnie!");
     } catch (err) {
       setMessage(err.message);
     }
   };
 
   return (
-    <AuthLayout title="Logowanie">
-      <input
-        type="email"
-        placeholder="Email"
-        className="mb-4 px-4 py-2 w-full rounded border"
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Hasło"
-        className="mb-4 px-4 py-2 w-full rounded border"
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button
-        onClick={handleLogin}
-        className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded w-full"
-      >
-        Zaloguj się
-      </button>
-      {message && <p className="mt-4 text-white">{message}</p>}
-    </AuthLayout>
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-center px-4"
+      style={{ backgroundImage: `url(${bgImage})` }}
+    >
+      <div className="bg-black/60 p-8 rounded-xl shadow-md w-full max-w-md text-center">
+        <h2 className="text-2xl font-semibold text-white mb-6">Formularz logowania</h2>
+
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full px-4 py-2 mb-4 rounded text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <input
+          type="password"
+          placeholder="Hasło"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full px-4 py-2 mb-6 rounded text-black placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <button
+          onClick={handleLogin}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded transition"
+        >
+          Zaloguj się
+        </button>
+
+        {message && <p className="mt-4 text-sm text-white">{message}</p>}
+      </div>
+    </div>
   );
 }
