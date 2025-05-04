@@ -37,7 +37,7 @@ export default function Login() {
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="bg-black/60 p-8 rounded-xl shadow-md w-full max-w-md text-center">
-        <h2 className="text-2xl font-semibold text-white mb-6">Formularz logowania</h2>
+        <h2 className="text-2xl font-semibold text-white mb-6">Fooormularz logowania</h2>
 
         <input
           type="email"
