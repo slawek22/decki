@@ -6,8 +6,9 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
+
   const API = import.meta.env.VITE_API_URL;
-  const navigate = useNavigate(); // <-- to dodajemy
 
   const handleLogin = async () => {
     try {
@@ -19,12 +20,14 @@ export default function Login() {
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Błąd logowania");
-
-      localStorage.setItem("token", data.token); // zapis tokena
-localStorage.setItem("email", email);
-      navigate("/dashboard"); // <-- przekierowanie po zalogowaniu
+      setMessage("Zalogowano pomyślnie!");
+      setTimeout(() => navigate("/dashboard"), 1000);
     } catch (err) {
-      setMessage(err.message);
+      if (err.message.includes("Failed to fetch")) {
+        setMessage("Nie można połączyć się z serwerem. Sprawdź połączenie.");
+      } else {
+        setMessage(err.message);
+      }
     }
   };
 
