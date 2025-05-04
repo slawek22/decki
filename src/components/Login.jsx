@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import bgImage from "../assets/background-cyber.png";
 
 export default function Login() {
@@ -6,6 +7,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const API = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate(); // <-- to dodajemy
 
   const handleLogin = async () => {
     try {
@@ -17,7 +19,10 @@ export default function Login() {
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Błąd logowania");
-      setMessage("Zalogowano pomyślnie!");
+
+      localStorage.setItem("token", data.token); // zapis tokena
+localStorage.setItem("email", email);
+      navigate("/dashboard"); // <-- przekierowanie po zalogowaniu
     } catch (err) {
       setMessage(err.message);
     }

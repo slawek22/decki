@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import bgImage from "../assets/background-cyber.png";
 
 export default function Register() {
@@ -6,6 +7,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const API = import.meta.env.VITE_API_URL;
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     try {
@@ -16,7 +18,7 @@ export default function Register() {
       });
 
       const data = await res.json();
-      if (!res.ok) throw new Error(data.message || "Error");
+      if (!res.ok) throw new Error(data.message || "Błąd rejestracji");
       setMessage("Zarejestrowano pomyślnie!");
     } catch (err) {
       setMessage(err.message);
@@ -54,6 +56,15 @@ export default function Register() {
         </button>
 
         {message && <p className="mt-4 text-sm text-white">{message}</p>}
+
+        {message.includes("Zarejestrowano") && (
+          <button
+            onClick={() => navigate("/login")}
+            className="mt-4 w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+          >
+            Przejdź do logowania
+          </button>
+        )}
       </div>
     </div>
   );
