@@ -26,7 +26,7 @@ export default function Home() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        Witaj w Decure
+        Witaj w Decccure
       </motion.h1>
 
       <motion.p

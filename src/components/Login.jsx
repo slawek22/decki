@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../assets/background-cyber.png";
@@ -20,6 +21,10 @@ export default function Login() {
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Błąd logowania");
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("email", email);
+
       setMessage("Zalogowano pomyślnie!");
       setTimeout(() => navigate("/dashboard"), 1000);
     } catch (err) {
@@ -37,7 +42,7 @@ export default function Login() {
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <div className="bg-black/60 p-8 rounded-xl shadow-md w-full max-w-md text-center">
-        <h2 className="text-2xl font-semibold text-white mb-6">Fooormularz logowania</h2>
+        <h2 className="text-2xl font-semibold text-white mb-6">Formularz logowania</h2>
 
         <input
           type="email"
