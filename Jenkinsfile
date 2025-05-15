@@ -49,13 +49,7 @@ pipeline {
         sh 'sudo chown -R www-data:www-data /home/ubuntu/frontend/dist'
       }
     }
-
-stage('Ustaw .env backend') {
-  steps {
-    sh 'echo "MONGO_URI=mongodb+srv://decsla:Start1234!@cluster0.sfov6dj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0" > /home/ubuntu/backend/.env'
-  }
-}
-
+	
     stage('Deploy backend') {
       steps {
         sh 'sudo rm -rf /home/ubuntu/backend'
