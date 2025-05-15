@@ -7,21 +7,22 @@ pipeline {
   }
 
   stages {
-    stage('Pobierz frontend') {
-      steps {
-        dir('frontend') {
-          git "${FRONTEND_REPO}"
-        }
-      }
+stage('Pobierz frontend') {
+  steps {
+    dir('frontend') {
+      git branch: 'main', url: "${FRONTEND_REPO}"
     }
+  }
+}
 
-    stage('Pobierz backend') {
-      steps {
-        dir('backend') {
-          git "${BACKEND_REPO}"
-        }
-      }
+stage('Pobierz backend') {
+  steps {
+    dir('backend') {
+      git branch: 'main', url: "${BACKEND_REPO}"
     }
+  }
+}
+
 
     stage('Zbuduj frontend') {
       steps {
