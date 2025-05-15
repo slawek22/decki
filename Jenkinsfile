@@ -7,28 +7,28 @@ pipeline {
   }
 
   stages {
-stage('Pobierz frontend') {
-  steps {
-    dir('frontend') {
-      git branch: 'main', url: "${FRONTEND_REPO}"
-    }
-  }
-}
 
-stage('Pobierz backend') {
-  steps {
-    dir('backend') {
-      git branch: 'main', url: "${BACKEND_REPO}"
+    stage('Pobierz frontend') {
+      steps {
+        dir('frontend') {
+          git branch: 'main', url: "${FRONTEND_REPO}"
+        }
+      }
     }
-  }
-}
 
+    stage('Pobierz backend') {
+      steps {
+        dir('backend') {
+          git branch: 'main', url: "${BACKEND_REPO}"
+        }
+      }
+    }
 
     stage('Zbuduj frontend') {
       steps {
         dir('frontend') {
           sh 'npm install'
-          sh 'npm run build'
+          sh 'npx vite build'
         }
       }
     }
@@ -58,7 +58,7 @@ stage('Pobierz backend') {
 
     stage('Restart serwisów') {
       steps {
-        sh 'sudo systemctl restart decure-backend || echo "backend service not configured – skipping"'
+        sh 'sudo systemctl restart decure-backend || echo "Backend service not configured – skipping"'
         sh 'sudo systemctl reload nginx'
       }
     }
