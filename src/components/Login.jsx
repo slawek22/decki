@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import bgImage from "../assets/background-cyber.png";
@@ -7,9 +6,9 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const navigate = useNavigate();
-
   const API = import.meta.env.VITE_API_URL;
+  console.log("API:", API);
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -24,15 +23,9 @@ export default function Login() {
 
       localStorage.setItem("token", data.token);
       localStorage.setItem("email", email);
-
-      setMessage("Zalogowano pomyślnie!");
-      setTimeout(() => navigate("/dashboard"), 1000);
+      navigate("/dashboard");
     } catch (err) {
-      if (err.message.includes("Failed to fetch")) {
-        setMessage("Nie można połączyć się z serwerem. Sprawdź połączenie.");
-      } else {
-        setMessage(err.message);
-      }
+      setMessage(err.message);
     }
   };
 
