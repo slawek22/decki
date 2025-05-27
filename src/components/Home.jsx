@@ -26,6 +26,10 @@ export default function Home() {
           >
             Zaczynam od zera
           </Link>
+<Link to="/scenario/1" className="text-blue-500 underline">
+  ➤ Rozpocznij scenariusz 1
+</Link>
+
           <Link
             to="/login"
             className="bg-white text-blue-700 hover:bg-gray-100 py-3 px-6 rounded-lg font-semibold text-lg"
