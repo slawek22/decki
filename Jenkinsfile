@@ -52,7 +52,7 @@ pipeline {
 	
     stage('Deploy backend') {
       steps {
-        sh 'sudo rm -rf /home/ubuntu/backend'
+      #  sh 'sudo rm -rf /home/ubuntu/backend'
         sh 'sudo cp -r backend /home/ubuntu/'
       }
     }

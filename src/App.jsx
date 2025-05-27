@@ -4,6 +4,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
 import TrainingDetails from "./pages/TrainingDetails";
+import ScenarioClickSafety from "./pages/ScenarioClickSafety";
 
 
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
 	<Route path="/dashboard" element={<Dashboard />} />
 <Route path="/training/:id" element={<TrainingDetails />} />
+<Route path="/scenario/1" element={<ScenarioClickSafety />} />
       </Routes>
     </Router>
   );
