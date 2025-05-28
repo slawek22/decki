@@ -1,6 +1,6 @@
-
 import React, { useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import ScenarioPasswordSafety from "../components/trainings/ScenarioPasswordSafety";
 
 export default function TrainingDetails() {
   const { id } = useParams();
@@ -9,8 +9,8 @@ export default function TrainingDetails() {
 
   const trainingData = {
     1: {
-      title: "Wproowadzenie do cyberbezpieczeństwa",
-      content: "To szkolenie wproowadza w podstawy cyberzagrożeń, takich jak malware, ransomware czy phishing.",
+      title: "Wprowadzenie do cyberbezpieczeństwa",
+      content: "To szkolenie wprowadza w podstawy cyberzagrożeń, takich jak malware, ransomware czy phishing.",
       quiz: [
         {
           question: "Co to jest phishing?",
@@ -43,6 +43,9 @@ export default function TrainingDetails() {
           answer: 2
         }
       ]
+    },
+    4: {
+      component: <ScenarioPasswordSafety />
     }
   };
 
@@ -106,6 +109,10 @@ export default function TrainingDetails() {
         </button>
       </div>
     );
+  }
+
+  if (training.component) {
+    return training.component;
   }
 
   return (

@@ -23,6 +23,11 @@ export default function Dashboard() {
       title: "Zarządzanie hasłami",
       description: "Tworzenie i bezpieczne przechowywanie haseł."
     }
+{
+  id: 4,
+  title: "Silne hasło to podstawa",
+  description: "Wybierz bezpieczne hasło i zdobądź odznakę."
+}
   ];
 
   const [trainingStatus, setTrainingStatus] = useState([]);
