@@ -35,7 +35,10 @@ export default function ScenarioPasswordSafety() {
         {steps.map((_, index) => (
           <div
             key={index}
-            className={\`w-8 h-8 rounded-full flex items-center justify-center text-white font-bold \${index <= currentStep ? 'bg-blue-600' : 'bg-gray-300'}\`}
+            className={
+              'w-8 h-8 rounded-full flex items-center justify-center text-white font-bold ' +
+              (index <= currentStep ? 'bg-blue-600' : 'bg-gray-300')
+            }
           >
             {index + 1}
           </div>
