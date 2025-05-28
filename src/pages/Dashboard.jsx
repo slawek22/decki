@@ -22,7 +22,7 @@ export default function Dashboard() {
       id: 3,
       title: "Zarządzanie hasłami",
       description: "Tworzenie i bezpieczne przechowywanie haseł."
-    }
+    },
 {
   id: 4,
   title: "Silne hasło to podstawa",
